@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #1e8f3d;
+  background: #136f2d;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,18 +14,26 @@ h1 {
   margin: 10px;
 }
 
+/* Soccer field container */
 #field {
   position: relative;
   width: 90vw;
-  max-width: 800px;
+  max-width: 900px;
   height: 70vh;
-  background: linear-gradient(#3aa858, #2f8c47);
+  background: repeating-linear-gradient(
+    90deg,
+    #2e9b42 0,
+    #2e9b42 10%,
+    #34ad4c 10%,
+    #34ad4c 20%
+  );
   border: 5px solid white;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Field lines */
+/* Halfway line */
 #field::before {
   content: '';
   position: absolute;
@@ -37,6 +45,20 @@ h1 {
   transform: translateY(-50%);
 }
 
+/* Center circle */
+#field::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Goals */
 .goal {
   position: absolute;
   width: 10%;
@@ -54,6 +76,37 @@ h1 {
   right: 0;
 }
 
+/* Penalty areas */
+.penalty {
+  position: absolute;
+  width: 16%;
+  height: 40%;
+  border: 2px solid white;
+}
+
+.penalty.left {
+  top: 30%;
+  left: 0;
+}
+
+.penalty.right {
+  top: 30%;
+  right: 0;
+}
+
+/* Center spot */
+.center-spot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Player tokens */
 .player {
   position: absolute;
   width: 60px;
@@ -76,6 +129,7 @@ h1 {
   transform: scale(1.05);
 }
 
+/* Editable player names */
 input.name-edit {
   position: absolute;
   width: 80px;
